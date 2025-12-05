@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AR Arcade: Modular</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- MediaPipe Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.3.1640029074/camera_utils.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils@0.6.1629159505/control_utils.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils@0.3.1620248257/drawing_utils.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1646424915/hands.js"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <video class="input_video" autoplay playsinline muted></video>
+
+    <div id="orientation-lock" class="overlay">
+        <div class="spinner" style="border-top-color: #fff;"></div>
+        <p style="line-height: 1.6; font-size: 12px;">PLEASE ROTATE DEVICE</p>
+    </div>
+
+    <div id="game-wrapper">
+        <canvas id="gameCanvas"></canvas>
+
+        <!-- Loading -->
+        <div id="screen-loading" class="overlay">
+            <div class="spinner"></div>
+            <div id="loading-text">SYSTEM LOADING...</div>
+        </div>
+
+        <!-- Menu -->
+        <div id="screen-menu" class="overlay hidden">
+            <div class="header-row">
+                <div class="arrow-btn" id="btn-prev-game">&lt;</div>
+                <h1 id="menu-title">PONG</h1>
+                <div class="arrow-btn" id="btn-next-game">&gt;</div>
+            </div>
+            <div class="subtitle">Gesture PvP Edition</div>
+
+            <div class="settings-grid" id="settings-container">
+                <!-- Injected via UIManager.js -->
+            </div>
+
+            <button class="start-btn" id="btn-start">START GAME</button>
+        </div>
+
+        <!-- Game Over -->
+        <div id="screen-gameover" class="overlay hidden">
+            <h1 id="go-title">P1 WINS</h1>
+            <div class="subtitle" id="go-score">0 - 0</div>
+            <button class="start-btn" id="btn-menu">MENU</button>
+        </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+
+</html>
